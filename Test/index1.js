@@ -1,14 +1,13 @@
 import express from "express";
-import morgan from "morgan";
+import superheroes from "superheroes";
 
 const app = express();
 const port = 3000;
-app.use(morgan("combined"));
 
-app.use(morgan("tiny"));
 
 app.get("/", (req, res) => {
-  res.send("Hello");
+  let name = superheroes.random();
+  res.send(`<h1>Behold, I am ${name}!</h1>`);
 });
 
 app.listen(port, () => {
